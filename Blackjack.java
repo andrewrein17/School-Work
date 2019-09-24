@@ -1,3 +1,10 @@
+/*
+*
+* Simple game of blackjack
+* @author Andrew Rein 
+*
+* Date Modified : 7/14/2019
+*/
 import java.lang.Math;
 import java.util.stream.*;
 import java.util.Scanner;
