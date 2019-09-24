@@ -1,3 +1,9 @@
+/*
+*
+* A very simple game of go fish
+* @ author Andrew Rein
+* Date Modified : 7/28/2019
+*/
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
@@ -17,24 +23,7 @@ public class GoFish {
 	public static int npcBooks = 0;
 	
 	public static void main(String [] args) throws InterruptedException {
-		
-		/*Test.add(5);
-		Test.add(3);
-		Test.add(6);
-		Test.add(5);
-		Test.add(7);
-		Test.add(5);
-		Test.add(6);
-		Test.add(1);
-		System.out.println(Test);
-		isBook(Test);
-		System.out.println(Test);
-		
-		TestB.add(5);
-		TestB.add(5);
-		TestB.add(0);
-		TestB.add(5);*/
-		
+				
 		playGoFish();
 
 	}
