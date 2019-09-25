@@ -27,7 +27,7 @@ public class Chapter6Program {
 
 		int[][] arr = new int[n][n];
 
-		for (int r = 0; r < arr.length; r++) { // creates and fill an n x n array with 1s and 0s
+		for (int r = 0; r < arr.length; r++) { // creates and fills an n x n array with 1s and 0s
 
 			for (int c = 0; c < arr[r].length; c++) {
 
