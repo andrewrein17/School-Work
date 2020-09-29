@@ -66,7 +66,7 @@ public class CircularArrayQueue<E> implements Queue<E> {
 
 		E temp = queue[head];
 		queue[head] = null;
-		head = (head + 1);
+		head = (head + 1) % queue.length;;
 
 		size--;
 
