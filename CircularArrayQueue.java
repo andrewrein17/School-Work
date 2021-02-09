@@ -1,9 +1,9 @@
 /**
 *       
-*       Date Last Modified: 01/30/20
+*   Date Last Modified: 09/16/20
 *	@author Andrew Rein
 *
-*	CS2321, Spring 2020
+*	CS2321, Fall 2020
 *
 */
 package cs2321;
@@ -43,30 +43,31 @@ public class CircularArrayQueue<E> implements Queue<E> {
 	}
 
 	@Override
-	public void enqueue(E e) { //Queues an element at the end of the queue
+	public void enqueue(E e) { // Queues an element at the end of the queue
 
 		if (queue.length == size) {
-			CAPACITY = CAPACITY * 2;
+			throw new IllegalStateException("Queue is full");
+		} else {
+			
+			queue[tail] = e;
+			tail = (tail + 1) % queue.length;
+
+			size++;
 		}
-		queue[tail] = e;
-		tail = (tail + 1);
-
-		size++;
-
 	}
 
 	@Override
-	public E first() { //Returns the first element in the queue
+	public E first() { // Returns the first element in the queue
 
 		return queue[head];
 	}
 
 	@Override
-	public E dequeue() { //Dequeues the first element in the queue  
+	public E dequeue() { // Dequeues the first element in the queue
 
 		E temp = queue[head];
 		queue[head] = null;
-		head = (head + 1) % queue.length;;
+		head = (head + 1);
 
 		size--;
 

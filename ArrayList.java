@@ -1,8 +1,8 @@
 /**
-*   Date Last Modified: 01/30/20
+*   Date Last Modified: 09/16/20
 *	@author Andrew Rein
 *
-*	CS2321, Spring 2020
+*	CS2321, Fall 2020
 *
 */
 package cs2321;
@@ -13,44 +13,45 @@ import net.datastructures.List;
 
 public class ArrayList<E> implements List<E> {
 
-	public static final int CAPACITY = 16;
-	private E[] data;
+	public static int capacity = 16;
+	protected E[] data;
 	private int size = 0;
 
 	public ArrayList() {
-		this(CAPACITY);
+		this(capacity);
 	}
 
 	@SuppressWarnings("unchecked")
-	public ArrayList(int capacity) {
-		data = (E[]) new Object[capacity];
+	public ArrayList(int newCapacity) {
+		data = (E[]) new Object[newCapacity];
+		capacity = newCapacity;
 	}
 
 	protected void checkIndex(int i, int n) throws IndexOutOfBoundsException, IllegalStateException {
 		if (i < 0 || i >= n)
-			throw new IndexOutOfBoundsException("Illega index");
+			throw new IndexOutOfBoundsException("Illegal index");
 	}
 
 	@Override
-	public int size() { //Returns the size of the list
+	public int size() { // Returns the size of the list
 
 		return size;
 	}
 
 	@Override
-	public boolean isEmpty() { //Returns true if the list is empty 
+	public boolean isEmpty() { // Returns true if the list is empty
 		return size == 0;
 	}
 
 	@Override
-	public E get(int i) throws IndexOutOfBoundsException { //Returns an element at a given index
+	public E get(int i) throws IndexOutOfBoundsException { // Returns an element at a given index
 		checkIndex(i, size);
 
 		return data[i];
 	}
 
 	@Override
-	public E set(int i, E e) throws IndexOutOfBoundsException { //Sets an element at the given index
+	public E set(int i, E e) throws IndexOutOfBoundsException { // Sets an element at the given index
 		checkIndex(i, size);
 		E temp = data[i];
 		data[i] = e;
@@ -58,11 +59,12 @@ public class ArrayList<E> implements List<E> {
 	}
 
 	@Override
-	public void add(int i, E e) throws IndexOutOfBoundsException { //Adds an element at a given index
+	public void add(int i, E e) throws IndexOutOfBoundsException { // Adds an element at a given index
 
 		checkIndex(i, size + 1);
-		if (size == data.length) {
-			resize(2 * data.length);
+		if (size == capacity) {
+			capacity = capacity * 2;
+			resize(capacity);
 		}
 
 		for (int k = size - 1; k >= i; k--) {
@@ -73,7 +75,7 @@ public class ArrayList<E> implements List<E> {
 	}
 
 	@Override
-	public E remove(int i) throws IndexOutOfBoundsException { //Removes an element at a given index 
+	public E remove(int i) throws IndexOutOfBoundsException { // Removes an element at a given index
 		checkIndex(i, size);
 		E temp = data[i];
 		for (int k = i; k < size - 1; k++) {
@@ -85,27 +87,43 @@ public class ArrayList<E> implements List<E> {
 		return temp;
 	}
 
+	public class arrayIterator implements Iterator<E> {
+
+		int cursor = 0;
+	
+		@Override
+		public boolean hasNext() {
+			return cursor <= size-1;
+		}
+
+		@Override
+		public E next() {
+			return data[cursor++];
+		}
+	}
+	
 	@Override
 	public Iterator<E> iterator() {
-		return null;
+		return new arrayIterator();
 	}
 
 	public void addFirst(E e) {
-		data[size + 1] = e;
+		add(0,e);
 	}
 
 	public void addLast(E e) {
+		add(size, e);
 	}
 
 	public E removeFirst() throws IndexOutOfBoundsException {
-		return null;
+		return remove(0);
 	}
 
 	public E removeLast() throws IndexOutOfBoundsException {
-		return null;
+		return remove(size - 1);
 	}
 
-	public void resize(int capacity) { //Allows the array to be resized of the capacity is reached
+	public void resize(int capacity) { // Allows the array to be resized of the capacity is reached
 		@SuppressWarnings("unchecked")
 		E[] temp = (E[]) new Object[capacity];
 		for (int k = 0; k < size; k++) {
