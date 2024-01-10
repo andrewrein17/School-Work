@@ -1,0 +1,14 @@
+#include <stdio.h>
+
+int i,j,k,l;
+
+int main () {
+
+	i=1; j=2; k=3; l=4;
+
+	printf("%d\n", i < j);
+	printf("%d\n", i <= i);
+	printf("%d\n", l < k);
+	printf("%d\n", k <= j);
+
+}

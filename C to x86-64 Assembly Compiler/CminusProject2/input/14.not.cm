@@ -1,0 +1,13 @@
+#include <stdio.h>
+
+int i,j,k;
+int main () {
+
+	i=1; j=0; k=6;
+
+	printf("%d\n", i);
+	printf("%d\n", !j);
+	printf("%d\n", j);
+	printf("%d\n", !i);
+	printf("%d\n", !k);
+}

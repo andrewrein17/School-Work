@@ -1,0 +1,16 @@
+#include <stdio.h>
+
+int a, b;
+
+int main()
+{
+	printf("enter a:");
+   	scanf("%d", &a);
+	if (a>=0) {
+	    b = a;
+	    printf("absoulute valute is %d\n", b);
+	} else {
+	    b = 0 - a;
+	    printf("absoulute value is %d\n", b);
+       }
+}

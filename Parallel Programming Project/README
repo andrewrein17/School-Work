@@ -1,0 +1,59 @@
+1. In my program, to make sure that at most 'm' eagles are feeding at once,
+   I used an Eating semaphore which value is set to allow at most m eagles
+   before blocking until signaled after the refilling of the pots.
+
+2. If no pots are open and or all are empty, then the eagle is blocked using
+   the same Eating semaphore until the first eagle finds that the pots are
+   empty uses the Waiting semaphore to allow only that single eagle to wake
+   up the mother eagle.
+
+3. If there is ever an empty pot that an eagle that is ready to eat can eat
+   from, the semaphore controlling access to the food counter will always
+   allow that eagle to pass without blocked as it's value is set when the
+   mother eagle resets the food pots. The babies are never blocked if there
+   is food ready to eat.
+
+4. As stated above, the Eating semaphore only allows m eagles to eat before
+   the pots must be reset by the mother eagle. Once the pots are reset, 
+   exactly m eagles are NOT blocked and allowed to eat. The rest are 
+   blocked until the mother resets the food.
+
+5. This is tracked by the pot counter which makes sure that no two eagles
+   can eat the food from the same pot. After the mother eagle resets the 
+   food, the pot trackers are reset as well.
+
+6. The program only allows a single eagle to wake up the mother through the
+   use of the "Waiting" semaphore. The semaphores value is 1 which allows 
+   only the first eagle to pass and wake the mother. All the rest are blocked
+   until the food is reset and the semaphore is signaled using a conter to 
+   keep track of how many eagles were blocked.
+
+7. At the start of the program, the mother calls goto_sleep(), which causes 
+   the mother eagle thread to be blocked on a semaphore with value of 0. When
+   the mother is woken by the process above, the sleeping semaphore is signaled
+   and the mother is unblock to perform the actions need until it is blocked by
+   the sleep again.
+
+8. As explained in answer 6, all but the first eagle are blocked while the 
+   first eagle wakes the mother. Until the mother has performed all duties, 
+   all eagles are blocked through the Waiting semaphore. The mother signals
+   this semaphore "wait_count" amount of times to allow eagles to continue.
+
+9. To make sure that the babies cannot eat before the mother refills the pots,
+   a Waiting semaphore is used to block the babies until one of the eagles 
+   wakes the mother, who in turn, once the food is reset, signals and unblocks
+   the hungry babies which allows them to eat.
+
+10. Each time a baby is blocked by the Waiting semaphore, wait_count is
+    incremented and once the mother is done with all duties, signals the 
+    Waiting semaphore that many times to unblock all eagles, then signals
+    the semaphore blocking the eagle that woke her so that it can continue.
+
+11. Once the feeding count has been reached, the mother signals the final "t"
+    number of eagles to feed and the rest fall through the eating function due
+    to the check before eating which makes sure that there is food and that it
+    is not the last feeding. The babies which do not get to eat in the last
+    round of feeding are returned to the main and joined. Once the last "t"
+    eagles finish eating, all the treads return to main and the mother retires,
+    ending the program.
+ 

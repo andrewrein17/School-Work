@@ -1,0 +1,11 @@
+#include <stdio.h>
+
+int i,j,k,l;
+
+int main () {
+
+  printf("51/17 = %d\n", 51/17);
+  i=100;  k=2; l=5;
+  j = i / k / l;
+  printf("100/2/5 is %d\n", j);
+}

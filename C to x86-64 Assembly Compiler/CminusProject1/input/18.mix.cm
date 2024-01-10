@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+int i,j,k,l,m,n;
+
+int main () {
+   printf("i = ");
+   scanf("%d", &i);
+   printf("j = ");
+   scanf("%d", &j);
+   printf("k = ");
+   scanf("%d", &k);
+   printf("l = ");
+   scanf("%d", &l);
+   printf("m = ");
+   scanf("%d", &m);
+   n = k < j + l && (!(i!=k));
+   printf("%d\n", n);
+   printf("%d\n", i * l > j * k || 1 <= m);
+   printf("%d\n", k * l > j + k + l && i !=j || l>n);
+   printf("%d\n", l / j - i > m && k + l * n != l + k * n);
+}

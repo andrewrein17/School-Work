@@ -1,0 +1,8 @@
+#include <stdio.h>
+
+int main() {
+	printf("Your grader\n");
+	printf("will put ");
+	printf("a random ");
+	printf("string here\n");
+}

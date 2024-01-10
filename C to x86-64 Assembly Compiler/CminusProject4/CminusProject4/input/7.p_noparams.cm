@@ -1,0 +1,37 @@
+#include <stdio.h>
+
+int i,j,k,l;
+
+
+int a1() {
+	printf("a1()\n");
+	return 0;
+}
+
+int a2() {
+	j = a1(); 
+	printf("a2()\n");
+	return 0;
+}
+
+int a3() {
+	i = a1();
+	j = a2();
+	printf("a3()\n");
+	return 0;
+}
+
+int a4() {
+	i = a1();
+	j = a2();
+	k = a3();
+	printf("a4()\n");
+	return 0;
+}
+
+
+int main() {
+
+
+	i = a1(); j = a2(); k = a3(); l = a4() ;
+}

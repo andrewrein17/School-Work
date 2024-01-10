@@ -1,0 +1,10 @@
+#include <stdio.h>
+
+int i,j,k,l;
+
+int main () {
+  printf("10*20 = %d\n", 10*20);
+  i=7;  k=3; l=4;
+  j = i * k * l;
+  printf("result is %d\n", j);
+}

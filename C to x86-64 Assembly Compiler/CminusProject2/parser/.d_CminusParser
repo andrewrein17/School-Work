@@ -1,0 +1,2 @@
+libparser-g.a(CminusParser.o): CminusParser.c ../util/general.h \
+ ../util/symtab.h ../util/string_utils.h

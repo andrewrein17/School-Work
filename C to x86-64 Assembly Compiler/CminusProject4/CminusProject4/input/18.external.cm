@@ -1,0 +1,16 @@
+#include <stdio.h>
+
+int a;
+
+int main()
+{
+  int b;
+
+  b = 0;
+  printf("input #iterations:");
+  scanf("%d", &a);
+  while (b<a) {
+    printf("%d\n", sumI());
+    b = b+1;
+  }
+}

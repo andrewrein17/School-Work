@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+int a1() {
+	printf("a1\n");
+	return 1;
+}
+
+int a2() {
+	printf("a2\n");
+	return a1();
+}
+
+int main() {
+  printf("return sum: %d\n", a1()+a2());
+}

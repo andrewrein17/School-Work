@@ -1,0 +1,18 @@
+#include <stdio.h>
+int x;
+
+int t()
+{
+  int a[4];
+
+  x = foo();
+  scanf("%d", &a[6]);
+  scanf("%d", &a[7]);
+  return x;
+}
+
+int main()
+{
+  x = t();
+  printf("You should not reach here\n");
+}

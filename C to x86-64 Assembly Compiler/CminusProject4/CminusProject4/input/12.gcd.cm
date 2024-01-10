@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+int x, y;
+
+int gcd() {
+      int t;
+         if (y==0) {
+            return x;
+	 }
+         else {
+	      t = x;
+	      x = y;
+	      y = t - y * (t / y);
+	      return gcd();
+	 }
+}
+
+int main() {
+         printf("enter x:");
+         scanf("%d", &x);
+	 printf("enter y:");
+         scanf("%d", &y);
+         while ((x != 0) || (y != 0)) {
+	   printf("gcd is %d\n", gcd());
+	   printf("enter x:");
+           scanf("%d", &x);
+	   printf("enter y:");
+           scanf("%d", &y);
+         }
+}

@@ -1,0 +1,11 @@
+#include <stdio.h>
+
+int a;
+
+int main() {
+	printf("input an integer: ");
+	scanf("%d", &a); 
+        printf("you entered: %d\n", a);
+	printf("%d\n", 1); 
+	printf("%d\n", 1+2);
+}

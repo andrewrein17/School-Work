@@ -1,0 +1,64 @@
+#include <stdio.h>
+
+int i, j;
+int a[20][11];
+
+int init()
+{
+  int i, j;
+  int a[20][11];
+
+  i = 0;
+  while (i < 20) {
+    j = 0;
+    while (j < 11) {
+      a[i][j] = i*11+j;
+      printf("%5d", a[i][j]);
+      j = j+1;
+    }
+    printf("\n");
+    i = i+1;
+  }
+  return 1;
+}
+
+int main()
+{
+  int b[20][11];
+  int a[20][11];
+  int f;
+  
+  if (init()) {
+    i = 0;
+    while (i < 20) {
+      j = 0;
+      while (j < 11) {
+	a[i][j] = i;
+	printf("%5d", a[i][j]);
+	j = j+1;
+      }
+      printf("\n");
+      i = i+1;
+    }
+    
+    printf("input a factor (2-10):\n");
+    scanf("%d", &f);
+  
+    printf("*\n");
+    printf("%d\n", f);
+    printf("=\n");
+
+    i=0;
+    while (i < 20) {
+      j = 0;
+      while (j < 11) {
+	b[i][j] = a[i][j]*f;
+	printf("%5d", b[i][j]);
+	j = j+1;
+      }
+      printf("\n");
+      i = i+1;
+    }
+    printf("\n");
+  }
+}

@@ -1,0 +1,9 @@
+#include <stdio.h>
+
+int a;
+
+int main()
+{
+  a = sum100();
+  printf("%d\n", a);
+}
